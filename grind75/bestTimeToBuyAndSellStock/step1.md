@@ -47,3 +47,5 @@ class Solution {
   - この説明がわかりやすかった。
   - ある時点での最大利益を順に操作するという考え方。
     - ある時点での最大利益はその時点での価格-それまでの最小価格で、それまでの最小価格は順に走査していく過程で更新していくことができる。
+- [Kadane's Algorithm](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/4868897/most-optimized-kadane-s-algorithm-java-c-python-rust-javascript/) に解放が似ているらしい。
+  - 確かに似ている
