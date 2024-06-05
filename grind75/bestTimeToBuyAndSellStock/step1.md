@@ -45,7 +45,7 @@ class Solution {
 - Discordのコメントで、処理を分解してそれぞれを1重ループでできると理解したあとに、それぞれの処理を1つのループにまとめるというアプローチはなるほどなと思った。
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/3914105/most-optimized-solution-easy-to-understand-c-java-python/
   - この説明がわかりやすかった。
-  - ある時点での最大利益を順に操作するという考え方。
+  - ある時点での最大利益を順に走査するという考え方。
     - ある時点での最大利益はその時点での価格-それまでの最小価格で、それまでの最小価格は順に走査していく過程で更新していくことができる。
 - [Kadane's Algorithm](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/4868897/most-optimized-kadane-s-algorithm-java-c-python-rust-javascript/) に解放が似ているらしい。
   - 確かに似ている
