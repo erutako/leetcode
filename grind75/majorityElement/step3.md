@@ -12,7 +12,26 @@ O(1)
 
 ### コード
 ```Java
+class Solution {
+    public int majorityElement(int[] nums) {
+        int candidate = Integer.MAX_VALUE;
+        int count = 0;
 
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+
+            if (candidate == num) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+
+        return candidate;
+    } 
+}
 ```
 ### かかった時間
 1分30秒
