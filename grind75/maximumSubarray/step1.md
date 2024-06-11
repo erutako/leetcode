@@ -104,3 +104,6 @@ class Solution {
     - そう考えるとSolution1は最初に最大値を更新するかどうかを考えているので、Acceptedだとしても良くないコードな気がする。
 - Solution1でint max = Integer.MIN_VALUEは仕様上考えられる最小値を設定しており、先に空配列チェックをしておけば問題ないので、このままで良いかも。
 - 他のSolutionを見て気づいたけど、最大値の比較はMath.maxを使ったほうが読みやすかった。
+- 分割統治法でも解けるらしい。たしかに。計算量がO(NlogN)になるので、単純な全探索よりは速いけど、直感的でないし時間計算量がKadane's Algorithmよりも大きいので今回は採用しなくて良さそう。
+  - https://leetcode.com/problems/maximum-subarray/solutions/1595186/java-kadane-divide-and-conquer-dp/
+  - ↑で紹介されているが、動的計画法でも解ける。このほうがKadane'sより直感的かも。
