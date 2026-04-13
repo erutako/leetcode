@@ -31,15 +31,44 @@ end
 # @param [Array<Integer>] nums
 # @return [void]
 def move_zeroes(nums)
-  non_zero_length = 0;
-  nums.each.with_index do |n|
-    unless n.zero?
-      nums[non_zero_length] = n
-      non_zero_length += 1
+  insert_pos = 0
+  nums.each do |n|
+    if !n.zero?
+      nums[insert_pos] = n
+      insert_pos += 1
     end
   end
-  nums.fill(0, non_zero_length, nums.length - non_zero_length)
+  nums.fill(0, insert_pos..) if insert_pos < nums.length
+  nums
 end
+```
+
+#### Generatorで解く
+```ruby
+# @param {Integer[]} nums
+# @return {Void} Do not return anything, modify nums in-place instead.
+def move_zeroes(nums)
+  non_zero_generator = Enumerator.new do |yielder|
+    nums.each do |n|
+      yielder << n if n != 0
+    end
+  end
+
+  write_index = 0
+  
+  loop do
+    nums[write_index] = non_zero_generator.next
+    write_index += 1
+  rescue StopIteration
+    break
+  end
+
+  while write_index < nums.length
+    nums[write_index] = 0
+    write_index += 1
+  end
+end
+```
 
 ### かかった時間
 2min
@@ -59,7 +88,11 @@ end
   - 全然関係ないけどfhiyo-sanも初見で14min位かかっているのか(十分すごいけど)と思うと、こういうのは今までの経験値というかこういうトレーニングを積んで、知識や理屈を頭の中に入れられているかどうかによるところが大きいなという気持ち。
   - 3パスの回答はめっちゃきれい。やっぱりこの問題を見たときにイメージするやりたいことは多分これ。
     - スワップが云々というよりは、0を右に動かすという問題の見せ方に対して同じサイズの配列でもとの配列の非0が左から順にうまってたらええんやろという気持ち。
-      - これをワンパスで表現すると解答例になると思ったがちょっと違うな。スワップせずに無視して左寄せして最後に埋めすればいいからちょっと違う
-      - 最後に0埋めするやりかたはin-placeじゃできないと思っていただけど、fhiyo-sanのstep2nd見てたらできるな。
-- rubyでfill使うとC言語レベルで最適化されるらしい
-  - これは時間あったらソース読みたい
+      - これをワンパスで表現すると解答例になる。
+      - でもin-placeでやるなら採用できないのか
+- Erase-Remove Idiom, loop unrollingという観点
+  - https://github.com/fhiyo/leetcode/pull/54/changes#r1729230640
+  - https://github.com/usatie/leetcode/pull/3#discussion_r1938208737
+  - こういう考え方があることを知らなかった。
+- 境界値テストやろうねという話。境界値を考えるクセは大事。今回であれば空配列、0が右端に最初から寄っている。0がないなど。
+  - https://github.com/maxhealy01/blind-75/pull/54#discussion_r1252304534
