@@ -90,6 +90,7 @@ end
     - スワップが云々というよりは、0を右に動かすという問題の見せ方に対して同じサイズの配列でもとの配列の非0が左から順にうまってたらええんやろという気持ち。
       - これをワンパスで表現すると解答例になる。
       - でもin-placeでやるなら採用できないのか
+        - 嘘、採用できる。そのまま配列を塗り替えていけばいい。
 - Erase-Remove Idiom, loop unrollingという観点
   - https://github.com/fhiyo/leetcode/pull/54/changes#r1729230640
   - https://github.com/usatie/leetcode/pull/3#discussion_r1938208737
