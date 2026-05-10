@@ -34,6 +34,7 @@ end
   - 確かにreturnが必要な箇所とそうでない箇所があるということはreturnにここで処理を終えて値を返すという意味があるということなので、処理を途中で終えるという意図がない場合はreturnを書かないほうがよさそう
 - currentという名前をやめてcursorという名前にしてみた。
   - こちらのほうがnodeを辿っている感じがしてよさそう
+  - https://github.com/hiroki-horiguchi-dev/leetcode/pull/1#discussion_r2281841575
 - nodesという名前もvisited_nodesにしてみた。
   - 正直このくらいの長さの関数であれば個人的にはnodesいいかなという気持ちだけどvisited_nodesのほうが一目で意味がわかって良い。
 - 先にSetに値を追加してから、nextを使ってcycleの確認をする実装にしてみた。
