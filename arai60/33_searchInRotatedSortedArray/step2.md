@@ -663,6 +663,21 @@ def search(nums, target)
 end
 ```
 
+#### 1-pass 複合key bsearch
+```ruby
+# @param {Integer[]} nums
+# @param {Integer} target
+# @return {Integer}
+def search(nums, target)
+  last = nums.last
+  priority = ->(x) { [x <= last ? 1 : 0, x] }
+  target_key = priority[target]
+
+  candidate_index = nums.bsearch_index { |x| (priority[x] <=> target_key) >= 0 }
+  nums[candidate_index] == target ? candidate_index : -1
+end
+```
+
 ### かかった時間
 10min(提出コード)
 
